@@ -2,8 +2,6 @@ import tkinter
 from PIL import Image, ImageTk 
 import random
 
-
-
 # Widgit that represents the main window for the application
 root = tkinter.Tk("Test screen")
 root.title('Dice Rolling')
@@ -27,6 +25,17 @@ image_label = tkinter.Label(root, image= dice_image)
 image_label.image = dice_image
 
 image_label.pack(expand = True)
+
+# Function that the button will call to generate a new image
+def roll():
+    dice_image = ImageTk.PhotoImage(Image.open(random.choice(dice)))
+    image_label.configure(image=dice_image)
+    image_label.image = dice_image
+
+# Creating a button
+button = tkinter.Button(root, text='Roll', fg = 'black', bg = 'light blue', command=roll)
+
+button.pack(expand=True)
 
 # This keeps the windo open
 root.mainloop()
